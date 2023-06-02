@@ -1,0 +1,44 @@
+.container-xxl{
+    display: flex;
+    justify-content: space-between;
+    background-color: #213939;
+    height:50px;
+    width: 100%;
+    
+    
+}
+a{
+    text-decoration: none;
+    color: white;
+
+}
+.logo{
+    position: relative;
+    top: 20px;
+    left:30px
+    
+}
+.navlinks a{
+    padding: 35px;
+    position: relative;
+    top: 20px;
+    right: 70px;
+}
+.navlinks a:hover{
+    color:#14b1a7;
+
+}
+a button{
+    background-color: #14b1a7;
+    border-radius:5px;
+    color: white;
+    border: none;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    
+    
+}
+a button:hover{
+    background-color: #0f9c8c;
+}

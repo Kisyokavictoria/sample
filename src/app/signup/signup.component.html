@@ -1,0 +1,48 @@
+<div class="main"> 
+    <h1>User registration</h1>
+
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" autocomplete="on"> <!--The ts is connected to the html using the [formGroup]='reactiveForm'
+         and the formControlName using the form control directive names. When the button is clicked, the (ngSubmit) initiates 
+         the method set -onsubmit- th-->
+        <div class="form-group">
+            <label for="Firstname">FirstName</label><br>
+            <input type="text"id="Firstname" class="form-control" formControlName="firstname">
+        </div>
+        <pre></pre>
+
+        <div class="form-group">
+            <label for="Lastname">LastName</label><br>
+            <input type="text" id="Lastname" class="form-control" formControlName="lastname" >
+        </div>
+        <pre></pre>
+
+        <div class="form-group">
+            <label for="email">Email</label><br>
+            <input type="email" id="email" class="form-control" formControlName="email" >
+            <div>
+                <span style="color: red;" 
+                *ngIf="reactiveForm.get('email').invalid  &&  reactiveForm.get('email').touched">
+                The email you entered is invalid </span>
+            </div> 
+        </div>
+        <pre></pre>
+
+        <div class="form-group">
+            <label for="password">password</label><br>
+            <input type="password" id="password" class="form-control" formControlName="password">
+        </div>
+        <pre></pre>
+        
+
+        <p>Have an account?<a routerLink="/login">Sign in</a></p>
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+      
+    </form>
+
+    
+
+</div>
+
+
