@@ -1,48 +1,79 @@
-<div class="main"> 
-    <h1>User registration</h1>
+<div class="main">
+    <div class="BText">
+        <p>Welcome </p>
+        <h1>Sign Up</h1>
+    </div>
+    <div class="form">
+        <form action="form" [formGroup]="SignupForm" (ngSubmit)="onSubmit()">
+            <div class="fields">
+                <label for="Fname">First Name </label> <br>
+                <input type="text" id="Fname" formControlName="firstname">
+                <div>
+                    <small *ngIf="SignupForm.get('firstname').errors?.['required']  && SignupForm.get('firstname').touched"  >First name required</small>
+                    <small *ngIf="SignupForm.get('firstname').errors?.['noSpaceAllowed']">First name cannot contain space</small>
+                </div>
+            </div>
+            <pre></pre>
+            <div class="fields">
+                <label for="Lname">Last Name </label> <br>
+                <input type="text" id="Lname" formControlName="lastname">
+                <div>
+                    <small *ngIf="SignupForm.get('lastname').errors?.['required']  && SignupForm.get('lastname').touched"  >last name required</small>
+                    <small *ngIf="SignupForm.get('lastname').errors?.['noSpaceAllowed']">Last name cannot contain space</small>
+                </div>
+               
+            </div>
+            <pre></pre>
+            <div class="fields">
+                <label for="Email">Email </label> <br>
+                <input type="email" id="Email" formControlName="email">
+                <div>
+                    <span style="color:red;"
+                    *ngIf="SignupForm.get('email').errors?.['required'] && SignupForm.get('email').touched">
+                        Email required
+                    </span>
+                    <span style="color:red;"
+                    *ngIf="SignupForm.get('email').errors?.['email'] && SignupForm.get('email').touched">
+                    The email entered is invalid
+                        
+                    </span>
+                    
+                </div>
+            </div>
+            <pre></pre>
+            <div class="fields">
+                <label for="Password">Password </label> <br>
+                <input type="password" id="Password" formControlName="password">
+                <div>
+                    <small *ngIf="SignupForm.get('password').errors?.['required'] && SignupForm.get('password').touched">Password required </small>
+                    <small *ngIf="SignupForm.get('password').errors?.['minlength'] && SignupForm.get('password').touched">Too small</small>
+                </div>
+            </div>
+            <pre></pre>
+            <div class="fields">
+                <label for="Cpassword">Confirm Password </label> <br>
+                <input type="password" id="Cpassword" formControlName="confirmPassword">
+                <div>
+                    <small *ngIf="SignupForm.get('confirmPassword').errors?.['required'] && SignupForm.get('confirmPassword').touched">Password required </small>
+                    <small *ngIf="SignupForm.get('confirmPassword').errors?.['minlength'] && SignupForm.get('confirmPassword').touched">Too small</small>
+                </div>
+            </div>
+            <pre></pre>
 
-    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" autocomplete="on"> <!--The ts is connected to the html using the [formGroup]='reactiveForm'
-         and the formControlName using the form control directive names. When the button is clicked, the (ngSubmit) initiates 
-         the method set -onsubmit- th-->
-        <div class="form-group">
-            <label for="Firstname">FirstName</label><br>
-            <input type="text"id="Firstname" class="form-control" formControlName="firstname">
-        </div>
-        <pre></pre>
-
-        <div class="form-group">
-            <label for="Lastname">LastName</label><br>
-            <input type="text" id="Lastname" class="form-control" formControlName="lastname" >
-        </div>
-        <pre></pre>
-
-        <div class="form-group">
-            <label for="email">Email</label><br>
-            <input type="email" id="email" class="form-control" formControlName="email" >
-            <div>
-                <span style="color: red;" 
-                *ngIf="reactiveForm.get('email').invalid  &&  reactiveForm.get('email').touched">
-                The email you entered is invalid </span>
-            </div> 
-        </div>
-        <pre></pre>
-
-        <div class="form-group">
-            <label for="password">password</label><br>
-            <input type="password" id="password" class="form-control" formControlName="password">
-        </div>
-        <pre></pre>
+            
+            
         
-
-        <p>Have an account?<a routerLink="/login">Sign in</a></p>
-
-        <button class="btn btn-primary" type="submit">Submit</button>
-
-      
-    </form>
-
     
+            <div class="button">
+                <button type="submit">Sign Up</button>
+                
+            </div>
+            <pre></pre>
 
+            <div class="text2">
+                <p>Have an account? <a routerLink="/login">Login</a></p>
+            </div>
+        </form>
+    </div>
+    
 </div>
-
-

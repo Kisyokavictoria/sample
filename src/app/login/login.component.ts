@@ -1,25 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {FormGroup, FormControl,Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+  SigninForm: FormGroup;
 
-  message: string = "welcome to binding world"
-  search: string = "";
+  ngOnInit(){
+    this.SigninForm = new FormGroup({
+  
+      email: new FormControl(null , [Validators.email, Validators.required]),
+      password: new FormControl(null , [Validators.minLength(4), Validators.required,]),
+    
+      
+    },
+    
+    
+      // validators:this.passwordValidator('password', 'confirmPassword')
 
-  onclick(){
-  this.message = "oops you clicked me";
-
+    
+    );
+      
   }
-  onMouseOver(){
-    this.message = "oops you keep your mouse away from the button";
+  onSubmit(){
+    console.log(this.SigninForm.value);
   }
-  inputSearch(eventDate:Event){
-    this.search = (<HTMLInputElement>eventDate.target).value;
 
-  }
 
 }
+
+
+
+

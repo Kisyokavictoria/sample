@@ -1,6 +1,52 @@
-<p> {{message}} </p>
-<button (click)="onclick()" (mouseover)="onMouseOver()">see what i can do </button>
-<pre></pre>
-<span> search: <br> </span>
-<input type="text" (input)="inputSearch($event)">
-<span>You searched for {{search}}</span>
+<div class="main">
+    <div class="BText">
+        <p>Welcome back</p>
+        <h1>Login</h1>
+    </div>
+    <div class="form">
+        <form action="form" [formGroup]="SigninForm" (ngSubmit)="onSubmit()">
+            <div class="fields">
+                <label for="Email">Email </label> <br>
+                <input type="email" id="Email" formControlName="email">
+                <div>
+                    <span style="color:red;"
+                    *ngIf="SigninForm.get('email').errors?.['required'] && SigninForm.get('email').touched">
+                        Email required
+                    </span>
+                    <span style="color:red;"
+                    *ngIf="SigninForm.get('email').errors?.['email'] && SigninForm.get('email').touched">
+                    The email entered is invalid
+                        
+                    </span>
+                    
+                </div>
+            </div>
+            <pre></pre>
+            <div class="fields">
+                <label for="Password">Password </label> <br>
+                <input type="password" id="Password" formControlName="password">
+                <div>
+                    <small *ngIf="SigninForm.get('password').errors?.['required'] && SigninForm.get('password').touched">Password required </small>
+                    <small *ngIf="SigninForm.get('password').errors?.['minlength'] && SigninForm.get('password').touched">Too small</small>
+                </div>
+            </div>
+            <pre></pre>
+            <div class="text1">
+                <a routerLink="#">Forgot password</a>
+               
+            </div>
+            <pre></pre>
+            
+            <div class="button">
+                <button type="submit">Login</button>
+                
+            </div>
+            <pre></pre>
+
+            <div class="text2">
+                <p>Don't have an account? <a routerLink="/signup">Sign Up</a></p>
+            </div>
+        </form>
+    </div>
+    
+</div>
